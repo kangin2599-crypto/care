@@ -1,41 +1,41 @@
 // ==========================================
 // HappyCare 데이터 관리 파일 (data.js)
-// 새로운 증상, 약품, 질환 추가 시 이 파일만 수정하세요.
+// 새로운 증상, 약품, 질환 추가 및 관리는 이 파일에서 수행합니다.
 // ==========================================
 
-// 1. 증상 및 키워드 데이터
+// 1. 증상 및 키워드 데이터 (총 20개 항목)
 const SYMPTOMS = [
     // 두통 (Headache)
     { id: "h_migraine", category: "headache", label: "한쪽 머리 욱신거림", keywords: ["머리", "두통", "편두통", "한쪽", "관자놀이", "욱신", "띵"] },
     { id: "h_tension", category: "headache", label: "머리 조임/지욱지욱", keywords: ["머리", "두통", "조임", "지욱지욱", "압박감", "뒷목", "묵직"] },
-    { id: "h_dizzy", category: "headache", label: "어지러움/띵함", keywords: ["어지러움", "띵함", "어지럽다", "머리", "빙글"] },
-    { id: "h_front", category: "headache", label: "이마/눈주변 통증", keywords: ["이마", "눈주변", "전두통", "축농증", "눈이"] },
+    { id: "h_dizzy", category: "headache", label: "어지러움/띵함", keywords: ["어지러움", "띵함", "어지럽다", "머리", "빙글", "이명"] },
+    { id: "h_front", category: "headache", label: "이마/눈주변 통증", keywords: ["이마", "눈주변", "전두통", "축농증", "눈이", "압박"] },
 
     // 통증 & 근육통 (Pain)
     { id: "p_heel", category: "pain", label: "발 뒤꿈치/발바닥 통증", keywords: ["발", "뒤꿈치", "뒷꿈치", "발바닥", "아킬레스", "족천", "족근", "아파요", "아파", "디딜때"] },
     { id: "p_muscle", category: "pain", label: "전신/부위별 근육통", keywords: ["근육통", "몸살", "뻐근", "아프다", "알쌘", "쑤심", "몸이", "쑤셔"] },
-    { id: "p_joint", category: "pain", label: "관절 통증 (무릎/손목/발목)", keywords: ["관절", "무릎", "손목", "발목", "접질림", "삐었을때", "무릎이"] },
-    { id: "p_back", category: "pain", label: "허리 통증/요통", keywords: ["허리", "요통", "디스크", "허리아파", "허리가"] },
-    { id: "p_shoulder", category: "pain", label: "어깨/목 뻐근함(담)", keywords: ["어깨", "목", "담", "결림", "담걸림", "어깨가"] },
-    { id: "p_wrist", category: "pain", label: "손목 찌릿함/터널증후군", keywords: ["손목", "손가락", "찌릿", "터널", "손목이"] },
+    { id: "p_joint", category: "pain", label: "관절 통증 (무릎/손목/발목)", keywords: ["관절", "무릎", "손목", "발목", "접질림", "삐었을때", "무릎이", "연골"] },
+    { id: "p_back", category: "pain", label: "허리 통증/요통", keywords: ["허리", "요통", "디스크", "허리아파", "허리가", "요추"] },
+    { id: "p_shoulder", category: "pain", label: "어깨/목 뻐근함(담)", keywords: ["어깨", "목", "담", "결림", "담걸림", "어깨가", "승모근"] },
+    { id: "p_wrist", category: "pain", label: "손목 찌릿함/터널증후군", keywords: ["손목", "손가락", "찌릿", "터널", "손목이", "방아쇠"] },
 
     // 소화/위장 (Digestive)
-    { id: "d_heartburn", category: "digestive", label: "속쓰림/신물", keywords: ["속쓰림", "위통", "신물", "역류", "속이"] },
-    { id: "d_indigestion", category: "digestive", label: "체함/소화불량/더부룩", keywords: ["체함", "소화불량", "더부룩", "답답", "체했을때", "속더부룩"] },
-    { id: "d_diarrhea", category: "digestive", label: "복통/설사", keywords: ["복통", "배아픔", "설사", "배탈", "물설사", "배가"] },
-    { id: "d_constipation", category: "digestive", label: "변비/답답함", keywords: ["변비", "배변", "아랫배"] },
-    { id: "d_nausea", category: "digestive", label: "구토/메스꺼움", keywords: ["구토", "메스꺼움", "울렁거림", "토할것같아"] },
+    { id: "d_heartburn", category: "digestive", label: "속쓰림/신물", keywords: ["속쓰림", "위통", "신물", "역류", "속이", "명치"] },
+    { id: "d_indigestion", category: "digestive", label: "체함/소화불량/더부룩", keywords: ["체함", "소화불량", "더부룩", "답답", "체했을때", "속더부룩", "체기"] },
+    { id: "d_diarrhea", category: "digestive", label: "복통/설사", keywords: ["복통", "배아픔", "설사", "배탈", "물설사", "배가", "꾸르륵"] },
+    { id: "d_constipation", category: "digestive", label: "변비/답답함", keywords: ["변비", "배변", "아랫배", "숙변", "묵직"] },
+    { id: "d_nausea", category: "digestive", label: "구토/메스꺼움", keywords: ["구토", "메스꺼움", "울렁거림", "토할것같아", "구역질", "입덧"] },
 
     // 감기/호흡기 (Cold)
-    { id: "c_fever", category: "cold", label: "발열/오한", keywords: ["열", "열나요", "오한", "춥다", "고열"] },
-    { id: "c_cough", category: "cold", label: "기침/가래", keywords: ["기침", "가래", "목간지러움", "콜록"] },
-    { id: "c_sorethroat", category: "cold", label: "목 통증/인후통", keywords: ["목", "인후통", "목아픔", "침침", "목부음"] },
-    { id: "c_runny", category: "cold", label: "콧물/코막힘", keywords: ["콧물", "코막힘", "비염", "재채기"] },
+    { id: "c_fever", category: "cold", label: "발열/오한", keywords: ["열", "열나요", "오한", "춥다", "고열", "미열"] },
+    { id: "c_cough", category: "cold", label: "기침/가래", keywords: ["기침", "가래", "목간지러움", "콜록", "마른기침"] },
+    { id: "c_sorethroat", category: "cold", label: "목 통증/인후통", keywords: ["목", "인후통", "목아픔", "침침", "목부음", "편도"] },
+    { id: "c_runny", category: "cold", label: "콧물/코막힘", keywords: ["콧물", "코막힘", "비염", "재채기", "코맹맹"] },
 
     // 피부/기타 (Skin)
-    { id: "s_hives", category: "skin", label: "두드러기/가려움", keywords: ["두드러기", "가려움", "발진", "알레르기"] },
-    { id: "s_dryeye", category: "skin", label: "눈 피로/건조", keywords: ["눈", "건조", "눈물", "뻑뻑"] },
-    { id: "s_canker", category: "skin", label: "구내염/입안 헐음", keywords: ["구내염", "입안", "혓바늘"] }
+    { id: "s_hives", category: "skin", label: "두드러기/가려움", keywords: ["두드러기", "가려움", "발진", "알레르기", "모기", "아토피"] },
+    { id: "s_dryeye", category: "skin", label: "눈 피로/건조", keywords: ["눈", "건조", "눈물", "뻑뻑", "눈피로", "안구건조"] },
+    { id: "s_canker", category: "skin", label: "구내염/입안 헐음", keywords: ["구내염", "입안", "혓바늘", "입술", "혓바닥"] }
 ];
 
 // 2. 약품 데이터 (OTC: 일반의약품, Rx: 전문의약품/처방전)
@@ -104,6 +104,14 @@ const MEDICINES = {
         dose: "1회 1포, 식간 3회 복용",
         sideEffects: "다른 약과 복용 시 1~2시간 시간 차를 둘 것."
     },
+    "m_dulcolax": {
+        name: "둘코락스 / 메이킨",
+        type: "OTC",
+        price: "약 4,000원 ~ 5,000원 (10정)",
+        effect: "변비 완화 및 장 운동 촉진",
+        dose: "1일 1회 취침 전 1~2정 복용",
+        sideEffects: "복통이나 습관성 복용 주의. 우유와 동시 복용 금지."
+    },
     "m_colda": {
         name: "판콜에스 / 화콜종합감기약",
         type: "OTC",
@@ -127,10 +135,26 @@ const MEDICINES = {
         effect: "구내염, 혓바늘 상처 치료",
         dose: "면봉으로 1일 1~2회 질환 부위에 도포",
         sideEffects: "도포 시 강한 통증 느낌. 치아에 닿지 않도록 주의."
+    },
+    "m_artificial_tears": {
+        name: "인공눈물 (리프레쉬 / 프렌즈)",
+        type: "OTC",
+        price: "약 5,000원 ~ 10,000원",
+        effect: "안구 건조 완화 및 눈 피로 회복",
+        dose: "필요 시 1~2방울 점안",
+        sideEffects: "일회용 인공눈물은 개봉 후 하루 내 사용 권장."
+    },
+    "m_bonine": {
+        name: "보나링에이 / 멀미약",
+        type: "OTC",
+        price: "약 2,000원 ~ 3,000원",
+        effect: "어지러움, 구토, 멀미 증상 완화",
+        dose: "필요 시 1회 1정 복용",
+        sideEffects: "졸음 및 입마름 발생 가능."
     }
 };
 
-// 3. 질환 및 처치법 데이터
+// 3. 질환 및 처치법 데이터 (확장됨: 20개 모든 증상을 커버)
 const DISEASES = [
     {
         id: "d_plantar",
@@ -146,7 +170,7 @@ const DISEASES = [
         name: "긴장성 두통",
         category: "headache",
         symptomIds: ["h_tension", "h_dizzy", "p_shoulder"],
-        description: "스트레스나 목/어깨 근육의 긴장으로 조이는 듯한 통증이 발생합니다.",
+        description: "스트레스나 목/어깨 근육의 긴장으로 머리가 조이는 듯한 통증이 발생합니다.",
         treatment: "1. 따뜻한 찜질팩으로 뒷목과 어깨 마사지\n2. 목을 좌우/전후로 천천히 늘려주는 스트레칭\n3. 카페인 섭취 줄이기 및 충분한 수면",
         meds: ["m_tylenol", "m_advil"]
     },
@@ -160,6 +184,24 @@ const DISEASES = [
         meds: ["m_advil", "m_naproxen", "m_tylenol"]
     },
     {
+        id: "d_sinusitis",
+        name: "부비동염 (축농증) / 전두통",
+        category: "headache",
+        symptomIds: ["h_front", "c_runny"],
+        description: "코 주변 부비동에 염증이 생겨 이마, 눈 주변이 압박받듯 아프고 콧물이 동반됩니다.",
+        treatment: "1. 따뜻한 수건으로 이마와 코 주변 찜질\n2. 생리식염수로 코 세척\n3. 수분 충분히 섭취",
+        meds: ["m_colda", "m_advil"]
+    },
+    {
+        id: "d_vertigo",
+        name: "이석증 / 어지럼증",
+        category: "headache",
+        symptomIds: ["h_dizzy", "d_nausea"],
+        description: "귓속 이석이 탈락하거나 피로 등으로 인해 머리가 빙글빙글 도는 어지러움과 메스꺼움이 나타납니다.",
+        treatment: "1. 갑작스러운 머리 움직임을 피하고 안정 취하기\n2. 어두운 곳에 편안히 누워 휴식\n3. 증상이 지속되면 이비인후과 방문",
+        meds: ["m_bonine"]
+    },
+    {
         id: "d_myalgia",
         name: "담 결림 / 근육통",
         category: "pain",
@@ -167,6 +209,24 @@ const DISEASES = [
         description: "갑작스러운 운동이나 잘못된 자세로 근육이 뭉쳐 통증이 발생하는 상태입니다.",
         treatment: "1. 온찜질로 근육 이완 (1회 20분)\n2. 가벼운 기지개 스트레칭\n3. 무리한 운동 피하기",
         meds: ["m_advil", "m_pas"]
+    },
+    {
+        id: "d_joint_sprain",
+        name: "관절 염좌 / 관절통",
+        category: "pain",
+        symptomIds: ["p_joint"],
+        description: "무릎, 손목, 발목 관절이나 인대가 삐거나 무리하여 통증 및 부종이 나타납니다.",
+        treatment: "1. RICE 요법 (휴식 Rest, 냉찜질 Ice, 압박 Compression, 높이기 Elevation)\n2. 무리한 관절 사용 자제",
+        meds: ["m_naproxen", "m_pas", "m_celebrex"]
+    },
+    {
+        id: "d_back_pain",
+        name: "요추 염좌 / 허리 통증",
+        category: "pain",
+        symptomIds: ["p_back", "p_muscle"],
+        description: "무거운 물건을 들거나 잘못된 자세로 허리 근육과 인대에 무리가 간 상태입니다.",
+        treatment: "1. 바닥보다는 약간 단단한 침대에 누워 휴식\n2. 초기 48시간은 냉찜질, 이후 온찜질\n3. 허리를 과도하게 숙이지 않기",
+        meds: ["m_naproxen", "m_pas"]
     },
     {
         id: "d_carpal",
@@ -187,6 +247,15 @@ const DISEASES = [
         meds: ["m_gaviscon", "m_bearse"]
     },
     {
+        id: "d_indigestion_disease",
+        name: "급성 소화불량 / 체함",
+        category: "digestive",
+        symptomIds: ["d_indigestion", "d_nausea"],
+        description: "과식이나 스트레스로 위장 운동이 정체되어 속이 더부룩하고 답답한 상태입니다.",
+        treatment: "1. 미지근한 물 조금씩 마시기\n2. 배를 따뜻하게 마사지해주기\n3. 금식 후 가벼운 죽 섭취",
+        meds: ["m_bearse"]
+    },
+    {
         id: "d_enteritis",
         name: "급성 장염 / 배탈",
         category: "digestive",
@@ -196,6 +265,15 @@ const DISEASES = [
         meds: ["m_smecta", "m_bearse"]
     },
     {
+        id: "d_constipation_disease",
+        name: "변비 / 장운동 저하",
+        category: "digestive",
+        symptomIds: ["d_constipation"],
+        description: "수분 부족이나 식이섬유 부족으로 장 운동이 둔해져 배변이 어렵고 아랫배가 묵직합니다.",
+        treatment: "1. 공복에 미지근한 물 한 잔 마시기\n2. 식이섬유(채소, 사과 등) 섭취 늘리기\n3. 아랫배 시계 방향 마사지",
+        meds: ["m_dulcolax"]
+    },
+    {
         id: "d_flu",
         name: "감기 / 몸살감기",
         category: "cold",
@@ -203,6 +281,24 @@ const DISEASES = [
         description: "바이러스 감염으로 발열, 콧물, 기침, 근육통이 함께 나타나는 대표적인 호흡기 질환입니다.",
         treatment: "1. 따뜻한 물 자주 마시기 및 실내 습도 50~60% 유지\n2. 충분한 수면과 휴식",
         meds: ["m_colda", "m_tylenol", "m_advil"]
+    },
+    {
+        id: "d_rhinitis",
+        name: "알레르기 비염",
+        category: "cold",
+        symptomIds: ["c_runny"],
+        description: "꽃가루, 먼지 등으로 코 점막이 자극받아 연속적인 재채기와 맑은 콧물, 코막힘이 발생합니다.",
+        treatment: "1. 마스크 착용 및 환기\n2. 외출 후 손 씻기 및 세안\n3. 식염수로 코 세척",
+        meds: ["m_zyrtec"]
+    },
+    {
+        id: "d_dry_eye_syndrome",
+        name: "안구건조증 / 눈 피로",
+        category: "skin",
+        symptomIds: ["s_dryeye"],
+        description: "눈물층의 불균형이나 장시간 화면 시청으로 눈이 뻑뻑하고 피로감이 심해집니다.",
+        treatment: "1. 인공눈물 자주 점안하기\n2. 50분 작업 후 10분 눈 감고 휴식\n3. 눈 주변 온찜질 해주기",
+        meds: ["m_artificial_tears"]
     },
     {
         id: "d_hives",
