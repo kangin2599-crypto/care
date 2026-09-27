@@ -35,22 +35,22 @@
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow space-y-6">
 
-        <!-- Banner & Speech Search -->
+        <!-- Banner & Natural / Speech Search -->
         <section class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100">
             <h1 class="text-lg sm:text-xl font-bold text-slate-900 mb-1">어디가 불편하신가요?</h1>
-            <p class="text-xs sm:text-sm text-slate-500 mb-4">텍스트나 마이크 버튼을 눌러 음성으로 편하게 검색하세요. (예: "발 뒤꿈치가 아파요")</p>
+            <p class="text-xs sm:text-sm text-slate-500 mb-4">문장으로 편하게 검색하거나 마이크를 눌러 음성으로 말씀해보세요. (예: "발 뒤꿈치가 아파요")</p>
             
             <div class="relative flex items-center">
                 <input type="text" id="naturalSearchInput" onkeyup="handleSearch(event)" 
-                       placeholder="예: 발 뒤꿈치가 아파요, 허리 통증, 콧물 가래" 
-                       class="w-full pl-10 pr-24 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
+                       placeholder="예: 발 뒤꿈치가 아파요, 머리가 띵해요, 어깨 뻐근함" 
+                       class="w-full pl-10 pr-28 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-sm"></i>
                 
                 <div class="absolute right-1.5 flex items-center gap-1">
-                    <button id="micBtn" onclick="startSpeechRecognition()" title="음성으로 검색" class="p-2 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition">
+                    <button id="micBtn" onclick="startSpeechRecognition()" title="음성 검색" class="p-2 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition">
                         <i id="micIcon" class="fa-solid fa-microphone text-base"></i>
                     </button>
-                    <button onclick="executeSearch()" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-medium rounded-lg transition">
+                    <button onclick="executeSearch()" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-medium rounded-lg transition">
                         검색
                     </button>
                 </div>
@@ -64,7 +64,7 @@
         <section class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-100 space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
                 <h2 class="font-bold text-base sm:text-lg text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-indigo-600"></i> 증상 선택하기
+                    <i class="fa-solid fa-list-check text-indigo-600"></i> 증상 체크하기
                 </h2>
                 <button onclick="resetAll()" class="text-xs text-slate-400 hover:text-slate-600 underline">초기화</button>
             </div>
@@ -76,7 +76,7 @@
                 <button onclick="filterCategory('pain')" id="tab-pain" class="cat-tab px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 font-medium whitespace-nowrap hover:bg-slate-200">통증 & 근육통 (Pain)</button>
                 <button onclick="filterCategory('digestive')" id="tab-digestive" class="cat-tab px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 font-medium whitespace-nowrap hover:bg-slate-200">소화/위장</button>
                 <button onclick="filterCategory('cold')" id="tab-cold" class="cat-tab px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 font-medium whitespace-nowrap hover:bg-slate-200">감기/호흡기</button>
-                <button onclick="filterCategory('skin')" id="tab-skin" class="cat-tab px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 font-medium whitespace-nowrap hover:bg-slate-200">피부/눈/기타</button>
+                <button onclick="filterCategory('skin')" id="tab-skin" class="cat-tab px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 font-medium whitespace-nowrap hover:bg-slate-200">피부/기타</button>
             </div>
 
             <!-- Checkboxes Grid -->
@@ -95,7 +95,7 @@
         <!-- Results Section (Collapsible Diseases List) -->
         <section id="resultsSection" class="space-y-4">
             <div class="flex justify-between items-center">
-                <h2 class="font-bold text-base sm:text-lg text-slate-900">예상 질환 및 처치법</h2>
+                <h2 class="font-bold text-base sm:text-lg text-slate-900">예상 관련 질환 및 처치법</h2>
                 <span id="matchCount" class="text-xs text-slate-500 font-normal">증상을 선택하거나 검색해보세요</span>
             </div>
 
@@ -145,7 +145,7 @@
             </div>
         </section>
 
-        <!-- Emergency Contacts Section -->
+        <!-- Emergency Contacts Section (Kept as requested) -->
         <section class="bg-rose-50 border border-rose-100 rounded-2xl p-5 space-y-3">
             <h2 class="font-bold text-rose-900 text-sm sm:text-base flex items-center gap-2">
                 <i class="fa-solid fa-phone-volume text-rose-600"></i> 1인가구 비상 연락망
@@ -196,6 +196,7 @@
                     <p id="modalDesc" class="text-slate-700 leading-relaxed"></p>
                 </div>
 
+                <!-- Self Treatment & Stretching Section -->
                 <div class="p-3.5 bg-indigo-50 border border-indigo-100 rounded-xl space-y-2">
                     <h4 class="font-bold text-indigo-900 text-xs flex items-center gap-1.5">
                         <i class="fa-solid fa-hand-holding-medical text-indigo-600"></i> 자가 처치 & 스트레칭 가이드
@@ -204,7 +205,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">관련 약품 및 평균 가격</h4>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">관련 약품 및 평균 가격 (클릭 시 상세)</h4>
                     <div id="modalMedsList" class="space-y-2">
                         <!-- Med cards dynamically inserted -->
                     </div>
@@ -250,28 +251,28 @@
 
     <!-- JavaScript Data and Logic -->
     <script>
-        // Expanded Symptom List
+        // Broad and flexible keyword mapping to prevent zero-search results
         const SYMPTOMS = [
-            // Headaches
-            { id: "h_migraine", category: "headache", label: "한쪽 머리 욱신거림", keywords: ["머리", "두통", "편두통", "한쪽", "관자놀이", "욱신"] },
-            { id: "h_tension", category: "headache", label: "머리 조임/지욱지욱", keywords: ["머리", "두통", "조임", "지욱지욱", "압박감", "뒷목"] },
+            // Headaches (두통 카테고리 분리)
+            { id: "h_migraine", category: "headache", label: "한쪽 머리 욱신거림", keywords: ["머리", "두통", "편두통", "한쪽", "관자놀이", "욱신", "띵"] },
+            { id: "h_tension", category: "headache", label: "머리 조임/지욱지욱", keywords: ["머리", "두통", "조임", "지욱지욱", "압박감", "뒷목", "묵직"] },
             { id: "h_dizzy", category: "headache", label: "어지러움/띵함", keywords: ["어지러움", "띵함", "어지럽다", "머리", "빙글"] },
-            { id: "h_front", category: "headache", label: "이마/눈주변 통증", keywords: ["이마", "눈주변", "전두통", "축농증"] },
+            { id: "h_front", category: "headache", label: "이마/눈주변 통증", keywords: ["이마", "눈주변", "전두통", "축농증", "눈이"] },
 
-            // Pain & Body Pain
-            { id: "p_heel", category: "pain", label: "발 뒤꿈치/발바닥 통증", keywords: ["발", "뒤꿈치", "발바닥", "아킬레스", "족천", "족근", "아파요"] },
-            { id: "p_muscle", category: "pain", label: "전신/부위별 근육통", keywords: ["근육통", "몸살", "뻐근", "아프다", "알쌘", "쑤심"] },
-            { id: "p_joint", category: "pain", label: "관절 통증 (무릎/손목)", keywords: ["관절", "무릎", "손목", "발목", "접질림", "삐었을때"] },
-            { id: "p_back", category: "pain", label: "허리/요통", keywords: ["허리", "요통", "디스크", "허리아파"] },
-            { id: "p_shoulder", category: "pain", label: "어깨/목 뻐근함(담)", keywords: ["어깨", "목", "담", "결림", "담걸림"] },
-            { id: "p_wrist", category: "pain", label: "손목 찌릿함/터널증후군", keywords: ["손목", "손가락", "찌릿", "터널"] },
+            // Pain & Body Pain (통증/근육통 카테고리 분리)
+            { id: "p_heel", category: "pain", label: "발 뒤꿈치/발바닥 통증", keywords: ["발", "뒤꿈치", "뒷꿈치", "발바닥", "아킬레스", "족천", "족근", "아파요", "아파", "디딜때"] },
+            { id: "p_muscle", category: "pain", label: "전신/부위별 근육통", keywords: ["근육통", "몸살", "뻐근", "아프다", "알쌘", "쑤심", "몸이", "쑤셔"] },
+            { id: "p_joint", category: "pain", label: "관절 통증 (무릎/손목/발목)", keywords: ["관절", "무릎", "손목", "발목", "접질림", "삐었을때", "무릎이"] },
+            { id: "p_back", category: "pain", label: "허리 통증/요통", keywords: ["허리", "요통", "디스크", "허리아파", "허리가"] },
+            { id: "p_shoulder", category: "pain", label: "어깨/목 뻐근함(담)", keywords: ["어깨", "목", "담", "결림", "담걸림", "어깨가"] },
+            { id: "p_wrist", category: "pain", label: "손목 찌릿함/터널증후군", keywords: ["손목", "손가락", "찌릿", "터널", "손목이"] },
 
             // Digestive
-            { id: "d_heartburn", category: "digestive", label: "속쓰림/신물", keywords: ["속쓰림", "위통", "신물", "역류"] },
-            { id: "d_indigestion", category: "digestive", label: "체함/소화불량/더부룩", keywords: ["체함", "소화불량", "더부룩", "답답", "체했을때"] },
-            { id: "d_diarrhea", category: "digestive", label: "복통/설사", keywords: ["복통", "배아픔", "설사", "배탈", "물설사"] },
+            { id: "d_heartburn", category: "digestive", label: "속쓰림/신물", keywords: ["속쓰림", "위통", "신물", "역류", "속이"] },
+            { id: "d_indigestion", category: "digestive", label: "체함/소화불량/더부룩", keywords: ["체함", "소화불량", "더부룩", "답답", "체했을때", "속더부룩"] },
+            { id: "d_diarrhea", category: "digestive", label: "복통/설사", keywords: ["복통", "배아픔", "설사", "배탈", "물설사", "배가"] },
             { id: "d_constipation", category: "digestive", label: "변비/답답함", keywords: ["변비", "배변", "아랫배"] },
-            { id: "d_nausea", category: "digestive", label: "구토/구식", keywords: ["구토", "메스꺼움", "울렁거림"] },
+            { id: "d_nausea", category: "digestive", label: "구토/메스꺼움", keywords: ["구토", "메스꺼움", "울렁거림", "토할것같아"] },
 
             // Cold / Respiratory
             { id: "c_fever", category: "cold", label: "발열/오한", keywords: ["열", "열나요", "오한", "춥다", "고열"] },
@@ -279,13 +280,13 @@
             { id: "c_sorethroat", category: "cold", label: "목 통증/인후통", keywords: ["목", "인후통", "목아픔", "침침", "목부음"] },
             { id: "c_runny", category: "cold", label: "콧물/코막힘", keywords: ["콧물", "코막힘", "비염", "재채기"] },
 
-            // Skin / Eyes / Others
+            // Skin / Others
             { id: "s_hives", category: "skin", label: "두드러기/가려움", keywords: ["두드러기", "가려움", "발진", "알레르기"] },
             { id: "s_dryeye", category: "skin", label: "눈 피로/건조", keywords: ["눈", "건조", "눈물", "뻑뻑"] },
             { id: "s_canker", category: "skin", label: "구내염/입안 헐음", keywords: ["구내염", "입안", "혓바늘"] }
         ];
 
-        // Expanded Medicine Database
+        // Expanded Medicine Database (OTC vs Rx with prices)
         const MEDICINES = {
             "m_tylenol": {
                 name: "타이레놀정 500mg",
@@ -377,7 +378,7 @@
             }
         };
 
-        // Expanded Disease Database
+        // Expanded Disease Database with Care & Stretching Guides
         const DISEASES = [
             {
                 id: "d_plantar",
@@ -471,7 +472,7 @@
             }
         ];
 
-        // State variables
+        // State Variables
         let selectedSymptoms = new Set();
         let currentCategory = 'all';
         let isSymptomsExpanded = false;
@@ -492,7 +493,7 @@
             if (activeTab) {
                 activeTab.className = 'cat-tab px-3 py-1.5 rounded-full bg-indigo-600 text-white font-medium whitespace-nowrap';
             }
-            isSymptomsExpanded = false; // Reset expand state on category change
+            isSymptomsExpanded = false;
             renderSymptoms();
         }
 
@@ -506,7 +507,7 @@
                 ? SYMPTOMS 
                 : SYMPTOMS.filter(s => s.category === currentCategory);
 
-            const LIMIT = 8; // Compact view count
+            const LIMIT = 8; // Default initial view count
             const displayList = isSymptomsExpanded ? filtered : filtered.slice(0, LIMIT);
 
             displayList.forEach(s => {
@@ -589,7 +590,7 @@
             };
         }
 
-        // Natural Search
+        // Natural Sentence Search
         function handleSearch(e) {
             if (e.key === 'Enter') executeSearch();
         }
@@ -645,7 +646,7 @@
                 return;
             }
 
-            const LIMIT = 4; // Compact disease view limit
+            const LIMIT = 4; // Default initial disease view limit
             const displayList = isDiseasesExpanded ? list : list.slice(0, LIMIT);
 
             displayList.forEach(d => {
